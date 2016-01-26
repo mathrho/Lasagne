@@ -25,7 +25,7 @@ N_BATCH = 100
 # Optimization learning rate
 LEARNING_RATE = .001
 # All gradients above this will be clipped
-GRAD_CLIP = 100
+GRAD_CLIP = 100000 # GRAD_CLIP = 100
 # How often should we check the output?
 EPOCH_SIZE = 100 # 100
 # Number of epochs to train the net
