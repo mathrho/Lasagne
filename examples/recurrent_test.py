@@ -74,7 +74,6 @@ def gen_data(min_length=MIN_LENGTH, max_length=MAX_LENGTH, n_batch=N_BATCH):
     momentum in deep learning." Proceedings of the 30th international
     conference on machine learning (ICML-13). 2013.
     '''
-    np.random.seed(NUMPY_SEED)
 
     # Generate X - we'll fill the last dimension later
     X = np.concatenate([np.random.uniform(size=(n_batch, max_length, 1)),
@@ -103,6 +102,7 @@ def gen_data(min_length=MIN_LENGTH, max_length=MAX_LENGTH, n_batch=N_BATCH):
 
 
 def main(num_epochs=NUM_EPOCHS):
+    np.random.seed(NUMPY_SEED)
     print("Building network ...")
     # First, we build the network, starting with an input layer
     # Recurrent layers expect input of shape
@@ -158,17 +158,19 @@ def main(num_epochs=NUM_EPOCHS):
 
     # We'll use this "validation set" to periodically check progress
     X_val, y_val, mask_val = gen_data()
+    print X_val.sum(), y_val.sum(), mask_val.sum()
 
     print("Training ...")
     try:
         for epoch in range(num_epochs):
             for _ in range(EPOCH_SIZE):
                 X, y, m = gen_data()
+                print X.sum(), y.sum(), m.sum()
                 train(X, y, m)
             cost_train = compute_cost(X, y, m)
-            cost_val = compute_cost(X_val, y_val, mask_val)
+            #cost_val = compute_cost(X_val, y_val, mask_val)
             print("Epoch {} Training cost = {}".format(epoch, cost_val))
-            print("Epoch {} validation cost = {}".format(epoch, cost_val))
+            #print("Epoch {} validation cost = {}".format(epoch, cost_val))
     except KeyboardInterrupt:
         pass
 
