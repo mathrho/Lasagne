@@ -158,14 +158,14 @@ def main(num_epochs=NUM_EPOCHS):
 
     # We'll use this "validation set" to periodically check progress
     X_val, y_val, mask_val = gen_data()
-    print X_val.sum(), y_val.sum(), mask_val.sum()
+    print str(np.sum(X_val)), str(np.sum(y_val)), str(np.sum(mask_val))
 
     print("Training ...")
     try:
         for epoch in range(num_epochs):
             for _ in range(EPOCH_SIZE):
                 X, y, m = gen_data()
-                print X.sum(), y.sum(), m.sum()
+                print str(np.sum(X)), str(np.sum(y)), str(np.sum(m))
                 train(X, y, m)
             cost_train = compute_cost(X, y, m)
             #cost_val = compute_cost(X_val, y_val, mask_val)
