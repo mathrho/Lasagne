@@ -31,7 +31,7 @@ EPOCH_SIZE = 100 # 100
 # Number of epochs to train the net
 NUM_EPOCHS = 20
 # NUMPY random generator seed
-NUMPY_SEED = 1000
+NUMPY_SEED = 10000
 
 def gen_data(min_length=MIN_LENGTH, max_length=MAX_LENGTH, n_batch=N_BATCH):
     '''
