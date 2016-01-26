@@ -27,7 +27,7 @@ LEARNING_RATE = .001
 # All gradients above this will be clipped
 GRAD_CLIP = 100
 # How often should we check the output?
-EPOCH_SIZE = 100
+EPOCH_SIZE = 10 # 100
 # Number of epochs to train the net
 NUM_EPOCHS = 20
 # NUMPY random generator seed
@@ -158,18 +158,18 @@ def main(num_epochs=NUM_EPOCHS):
 
     # We'll use this "validation set" to periodically check progress
     X_val, y_val, mask_val = gen_data()
-    print(str(np.sum(X_val))+' '+str(np.sum(y_val))+' '+str(np.sum(mask_val)))
+    #print(str(np.sum(X_val))+' '+str(np.sum(y_val))+' '+str(np.sum(mask_val)))
 
     print("Training ...")
     try:
         for epoch in range(num_epochs):
             for _ in range(EPOCH_SIZE):
                 X, y, m = gen_data()
-                print(str(np.sum(X))+' '+str(np.sum(y))+' '+str(np.sum(m)))
+                #print(str(np.sum(X))+' '+str(np.sum(y))+' '+str(np.sum(m)))
                 train(X, y, m)
-            cost_train = compute_cost(X, y, m)
+                cost_train = compute_cost(X, y, m)
+                print("Epoch {} Training cost = {}".format(epoch, cost_val))
             #cost_val = compute_cost(X_val, y_val, mask_val)
-            print("Epoch {} Training cost = {}".format(epoch, cost_val))
             #print("Epoch {} validation cost = {}".format(epoch, cost_val))
     except KeyboardInterrupt:
         pass
