@@ -168,7 +168,7 @@ def main(num_epochs=NUM_EPOCHS):
                 #print(str(np.sum(X))+' '+str(np.sum(y))+' '+str(np.sum(m)))
                 train(X, y, m)
                 cost_train = compute_cost(X, y, m)
-                print("Epoch {} Training cost = {}".format(epoch, cost_val))
+                print("Epoch {} Training cost = {}".format(epoch, cost_train))
             #cost_val = compute_cost(X_val, y_val, mask_val)
             #print("Epoch {} validation cost = {}".format(epoch, cost_val))
     except KeyboardInterrupt:
