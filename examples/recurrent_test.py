@@ -30,7 +30,8 @@ GRAD_CLIP = 100
 EPOCH_SIZE = 100
 # Number of epochs to train the net
 NUM_EPOCHS = 20
-
+# NUMPY random generator seed
+NUMPY_SEED = 1000
 
 def gen_data(min_length=MIN_LENGTH, max_length=MAX_LENGTH, n_batch=N_BATCH):
     '''
@@ -73,6 +74,8 @@ def gen_data(min_length=MIN_LENGTH, max_length=MAX_LENGTH, n_batch=N_BATCH):
     momentum in deep learning." Proceedings of the 30th international
     conference on machine learning (ICML-13). 2013.
     '''
+    np.random.seed(NUMPY_SEED)
+
     # Generate X - we'll fill the last dimension later
     X = np.concatenate([np.random.uniform(size=(n_batch, max_length, 1)),
                         np.zeros((n_batch, max_length, 1))],
